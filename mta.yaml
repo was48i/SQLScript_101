@@ -1,0 +1,58 @@
+ID: SQLScript_101
+_schema-version: '2.1'
+version: 0.0.1
+modules:
+  - name: db
+    type: hdb
+    path: db
+    parameters:
+      memory: 256M
+      disk-quota: 256M
+    requires:
+      - name: SQLScript_101-hdi-container
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name}'
+  
+      - name: cross-container-service-1
+        group: SERVICE_REPLACEMENTS
+
+        properties:
+          key: ServiceName_1
+          service: ~{the-service-name}
+                            
+
+
+  - name: srv
+    type: nodejs
+    path: srv
+    parameters:
+      memory: 512M
+      disk-quota: 256M
+    provides:
+      - name: srv_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: SQLScript_101-hdi-container
+  - name: web
+    type: html5
+    path: web
+    requires:
+      - name: SQLScript_101-uaa
+resources:
+  - name: SQLScript_101-hdi-container
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: SQLScript_101-uaa
+    type: com.sap.xs.uaa-space
+    parameters:
+      path: ./xs-security.json
+
+  - name: cross-container-service-1
+    parameters:
+       service-name: CROSS_SCHEMA_SFLIGHT_00
+    properties:
+       the-service-name: ${service-name}
+    type: org.cloudfoundry.existing-service
+
