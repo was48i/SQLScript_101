@@ -49,9 +49,11 @@ FROM "_SYS_BIC"."sap.is.ddf.ddf/ProdHierNodeInheritAttrOverrideByNodeByDate" (
 		PLACEHOLDER."$$p_valid_to$$" => '20170101'
 );
 -- close cejoin
-ALTER SYSTEM ALTER CONFIGURATION ('indexserver.ini', 'SYSTEM') SET ('calcengine', 'cejoin_active') = '0' WITH RECONFIGURE;
+ALTER SYSTEM ALTER CONFIGURATION ('indexserver.ini', 'SYSTEM')
+SET ('calcengine', 'cejoin_active') = '0' WITH RECONFIGURE;
 -- open cejoin
-ALTER SYSTEM ALTER CONFIGURATION ('indexserver.ini', 'SYSTEM') SET ('calcengine', 'cejoin_active') = '1' WITH RECONFIGURE;
+ALTER SYSTEM ALTER CONFIGURATION ('indexserver.ini', 'SYSTEM')
+SET ('calcengine', 'cejoin_active') = '1' WITH RECONFIGURE;
 -- workaround
 SELECT *
 FROM "_SYS_BIC"."sap.is.ddf.ddf/ProdHierNodeInheritAttrOverrideByNodeByDate" (
