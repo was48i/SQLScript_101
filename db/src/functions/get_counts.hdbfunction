@@ -28,8 +28,11 @@ BEGIN
                  AND MONTH("HISTORY.CHANGEDAT") = MONTH(:im_fdate)
                  GROUP BY  "HISTORY.CHANGEDBY.EMPLOYEEID";
 
-    EMP_COMBINED_CNT = SELECT EMPLOYEEID, "get_full_name"("NAME.FIRST", "NAME.MIDDLE", "NAME.LAST") AS FULLNAME,
-                              crcnt.CREATE_CNT, chcnt.CHANGE_CNT, crcnt.CREATE_CNT + chcnt.CHANGE_CNT AS COMBINED_CNT
+    EMP_COMBINED_CNT = SELECT EMPLOYEEID,
+                              "get_full_name"("NAME.FIRST", "NAME.MIDDLE", "NAME.LAST") AS FULLNAME,
+                              crcnt.CREATE_CNT,
+                              chcnt.CHANGE_CNT,
+                              crcnt.CREATE_CNT + chcnt.CHANGE_CNT AS COMBINED_CNT
                        FROM "MD.Employees" AS emp
                        LEFT OUTER JOIN :CREATE_CNT AS crcnt ON emp.EMPLOYEEID = crcnt.EID
                        LEFT OUTER JOIN :CHANGE_CNT AS chcnt ON emp.EMPLOYEEID = chcnt.EID
