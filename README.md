@@ -1,5 +1,5 @@
 # SQLScript_101
-Sample code for SQLScript, support for Procedure, Scalar UDF and Table UDF. You can check the results in the Database Explorer, or you can use `useful_codes` to call the function in the procedure.
+Sample code for SQLScript, support for Procedure, Scalar UDF and Table UDF. You can check the results in the Database Explorer, and you can use `useful_codes` to call the function in the procedure.
 
 ![](https://raw.githubusercontent.com/ICHIGOI7E/mdpics/master/SQLScript/2.jpg)
 ## Install SAP Web IDE for HANA
