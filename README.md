@@ -1,5 +1,5 @@
 # SQLScript_101
-A simple Multi-Target Application (MTA) project for SQLScript. After building and deploying, you can check the results in the Database Explorer. And you can use `useful_codes` to call the function in the procedure.
+A Multi-Target Application (MTA) demo for SQLScript. After building and deploying, you can check the results in the Database Explorer. And you can use `useful_codes` to call the function in the procedure.
 
 ![](https://raw.githubusercontent.com/ICHIGOI7E/mdpics/master/SQLScript/2.jpg)
 ## Install SAP Web IDE for HANA
